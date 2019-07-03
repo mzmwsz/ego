@@ -38,7 +38,7 @@
 
 
 
-        <table tableName="tb_item" domainObjectName="TbItem"
+        <table tableName="tb_item_cat" domainObjectName="TbItemCat"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>

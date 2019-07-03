@@ -165,4 +165,26 @@
     SELECT <include refid="Base_Column_List" />
     from tb_item
   </select>
+
+  <sql id="deleteSql">
+    <foreach collection="ids" item="items" open="(" separator="," close=")">
+      #{items}
+    </foreach>
+  </sql>
+  <!--上架下架-->
+  <update id="updateItemStatusBatch" parameterType="map">
+    update tb_item
+    set status=#{type}
+    where id in
+    <foreach collection="ids" item="items" open="(" separator="," close=")">
+      #{items}
+    </foreach>
+  </update>
+  <update id="deleteItemBatch" parameterType="map">
+    update tb_item
+    set status=3
+    where id IN
+    <include refid="deleteSql"></include>
+
+  </update>
 </mapper>
