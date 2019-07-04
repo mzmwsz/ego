@@ -7,7 +7,9 @@ import com.shsxt.ego.common.model.PageResult;
 import com.shsxt.ego.rpc.mapper.db.dao.TbItemDescMapper;
 import com.shsxt.ego.rpc.mapper.db.dao.TbItemMapper;
 import com.shsxt.ego.rpc.mapper.db.dao.TbItemParamItemMapper;
+
 import com.shsxt.ego.rpc.pojo.TbItem;
+import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +34,9 @@ public class ItemServiceImpl implements IItemService {
 
     @Autowired
     private TbItemParamItemMapper itemParamItemMapper;
+
+
+    //商品的分页查询
     @Override
     public PageResult<TbItem> queryItemsListByParams(ItemQuery itemQuery) {
         //启动分页
@@ -70,5 +75,22 @@ public class ItemServiceImpl implements IItemService {
         itemParamItemMapper.deleteItemParamItemBatch(param);
         return new EgoResult();
     }
+
+    //商品添加
+    @Override
+    public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc){
+        tbItemMapper.insertSelective(tbItem);
+        itemDescMapper.insertSelective(tbItemDesc);
+        return new EgoResult();
+    }
+
+    //更新商品
+    @Override
+    public EgoResult updateItem(TbItem tbItem, TbItemDesc tbItemDesc) {
+        tbItemMapper.updateByPrimaryKeySelective(tbItem);
+        itemDescMapper.updateByPrimaryKeySelective(tbItemDesc);
+        return new EgoResult();
+    }
+
 
 }

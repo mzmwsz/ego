@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Controller
 public class ManagerItemCatController {
-    @Autowired
+    @Resource
     private IItemCatService iItemCatServiceProxy;
 
     @RequestMapping("item/cat/list")

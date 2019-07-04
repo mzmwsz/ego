@@ -5,6 +5,8 @@ import com.shsxt.ego.common.model.PageResult;
 import com.shsxt.ego.manager.Service.IManagerItemService;
 import com.shsxt.ego.manager.Service.impl.ManagerItemServiceImpl;
 import com.shsxt.ego.rpc.pojo.TbItem;
+import com.shsxt.ego.rpc.pojo.TbItemParam;
+import com.shsxt.ego.rpc.query.ItemParamQuery;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,7 @@ public class ManagerItemController {
     @Autowired
     private IManagerItemService managerItemService;
 
+    //商品的分页查询
     @RequestMapping("item/list")
     @ResponseBody
     public PageResult<TbItem> itmeList(ItemQuery itemQuery){
@@ -45,6 +48,19 @@ public class ManagerItemController {
     @ResponseBody
     public EgoResult delete(Long[] ids){
        return managerItemService.deleteItemBatch(ids);
+    }
+
+    //添加商品
+    @RequestMapping("item/save")
+    @ResponseBody
+    public EgoResult saveItem(TbItem tbItem,String desc){
+        return managerItemService.saveItem(tbItem,desc);
+    }
+    //商品更新
+    @RequestMapping("item/update")
+    @ResponseBody
+    public EgoResult updateItem(TbItem tbItem,String desc){
+        return managerItemService.updatItem(tbItem,desc);
     }
 
 }
