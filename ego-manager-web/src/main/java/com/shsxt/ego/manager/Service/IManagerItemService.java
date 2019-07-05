@@ -24,7 +24,7 @@ public interface IManagerItemService {
     public EgoResult deleteItemBatch(Long[] ids);
 
     //商品添加
-    public EgoResult saveItem(TbItem tbItem, String desc);
+    public EgoResult saveItem(TbItem tbItem, String desc,String paramData);
 
     //更新商品
     public EgoResult updatItem(TbItem tbItem,String desc);

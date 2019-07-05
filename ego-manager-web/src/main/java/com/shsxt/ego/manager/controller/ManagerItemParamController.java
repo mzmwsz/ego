@@ -27,5 +27,29 @@ public class ManagerItemParamController {
         return managerItemParamService.itemParamList(itemParamQuery);
     };
 
+    //根据itemCatId查询规格模板值和商品添加规格参数模板是一个
+    @RequestMapping("item/param/query/{itemCatId}")
+    @ResponseBody
+    public EgoResult queryItemParamByItemCatId(@PathVariable Long itemCatId){
+        return managerItemParamService.queryItemParamByItemCatId(itemCatId);
+    }
+    @RequestMapping("item/param/query/itemcatid/{itemCatId}")
+    @ResponseBody
+    public EgoResult queryItemParamByItemCatId02(@PathVariable Long itemCatId){
+        return managerItemParamService.queryItemParamByItemCatId(itemCatId);
+    }
 
+    //添加具体的商品规格模板
+    @RequestMapping("item/param/save/{itemCatId}")
+    @ResponseBody
+    public EgoResult saveItemParam(@PathVariable Long itemCatId,String paramData){//paramData是前台穿的json字符串
+        return managerItemParamService.saveItemParam(itemCatId,paramData);
+    }
+
+    //删除
+    @RequestMapping("item/param/delete")
+    @ResponseBody
+    public EgoResult deleteItemParam(Long[] ids){
+        return managerItemParamService.deleteItemParamBatch(ids);
+    }
 }

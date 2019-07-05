@@ -53,8 +53,8 @@ public class ManagerItemController {
     //添加商品
     @RequestMapping("item/save")
     @ResponseBody
-    public EgoResult saveItem(TbItem tbItem,String desc){
-        return managerItemService.saveItem(tbItem,desc);
+    public EgoResult saveItem(TbItem tbItem,String desc,String paramData){
+        return managerItemService.saveItem(tbItem,desc,paramData);
     }
     //商品更新
     @RequestMapping("item/update")

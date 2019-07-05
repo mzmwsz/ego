@@ -10,6 +10,7 @@ import com.shsxt.ego.rpc.mapper.db.dao.TbItemParamItemMapper;
 
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
+import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,9 +79,10 @@ public class ItemServiceImpl implements IItemService {
 
     //商品添加
     @Override
-    public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc){
+    public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem itemParamItem){
         tbItemMapper.insertSelective(tbItem);
         itemDescMapper.insertSelective(tbItemDesc);
+        itemParamItemMapper.insertSelective(itemParamItem);
         return new EgoResult();
     }
 

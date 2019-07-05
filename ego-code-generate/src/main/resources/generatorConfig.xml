@@ -38,7 +38,7 @@
 
 
 
-        <table tableName="tb_item_param" domainObjectName="TbItemParam"
+        <table tableName="tb_content_category" domainObjectName="TbContentCategory"
                enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false"></table>

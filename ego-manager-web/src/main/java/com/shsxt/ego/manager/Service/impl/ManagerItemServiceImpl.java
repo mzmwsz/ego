@@ -7,6 +7,7 @@ import com.shsxt.ego.manager.Service.IManagerItemService;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.pojo.TbItemParam;
+import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 import com.shsxt.ego.rpc.query.ItemParamQuery;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemService;
@@ -53,7 +54,7 @@ public class ManagerItemServiceImpl implements IManagerItemService {
 
     //商品添加
     @Override
-    public EgoResult saveItem(TbItem tbItem, String desc) {
+    public EgoResult saveItem(TbItem tbItem, String desc,String paramData) {
         //设置商品的id uuid
         Long itemId = IDUtlis.genItemId();
         Date date = new Date();
@@ -71,7 +72,12 @@ public class ManagerItemServiceImpl implements IManagerItemService {
         /**
          * 商品规格记录 待实现
          */
-        return itemServiceProxy.saveItem(tbItem, itemDesc);
+        TbItemParamItem itemParamItem = new TbItemParamItem();
+        itemParamItem.setItemId(itemId);
+        itemParamItem.setParamData(paramData);
+        itemParamItem.setCreated(date);
+        itemParamItem.setUpdated(date);
+        return itemServiceProxy.saveItem(tbItem, itemDesc,itemParamItem);
     }
 
     //更新商品

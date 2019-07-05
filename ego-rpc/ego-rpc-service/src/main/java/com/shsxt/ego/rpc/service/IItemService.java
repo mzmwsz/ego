@@ -6,6 +6,7 @@ import com.shsxt.ego.common.model.PageResult;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
 import com.shsxt.ego.rpc.pojo.TbItemParam;
+import com.shsxt.ego.rpc.pojo.TbItemParamItem;
 import com.shsxt.ego.rpc.query.ItemParamQuery;
 import com.shsxt.ego.rpc.query.ItemQuery;
 
@@ -33,7 +34,7 @@ public interface IItemService {
     public EgoResult deleteItemBatch(Long[] ids);
 
     //商品的添加
-      public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc);
+      public EgoResult saveItem(TbItem tbItem, TbItemDesc tbItemDesc, TbItemParamItem itemParamItem);
 
     //更新商品
     public EgoResult updateItem(TbItem tbItem, TbItemDesc tbItemDesc);
