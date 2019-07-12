@@ -114,7 +114,7 @@
                 <configuration>
                     <!-- 不需要上下文  http://localhost:8080/xxx.jsp -->
                     <path>/</path>
-                    <port>8089</port>
+                    <port>8080</port>
                 </configuration>
             </plugin>
         </plugins>

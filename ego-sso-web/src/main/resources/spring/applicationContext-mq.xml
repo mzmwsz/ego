@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/rabbit
+	    http://www.springframework.org/schema/rabbit/spring-rabbit.xsd" >
+    <!--配置connectionFactory -->
+    <rabbit:connection-factory id="rabbitConnectionFactory" host="127.0.0.1"
+                               username="shsxt" password="123456"  virtual-host="/shsxt" />
+    <!--配置RabbitAdmin   内部回创建connection以及channel-->
+    <rabbit:admin connection-factory="rabbitConnectionFactory"/>
+    <!--配置Template操作mq 通过模板类（amqpTemplate）发送消息到交换机（myExchange）它的路由键是（foo.bar）-->
+    <rabbit:template id="amqpTemplate" connection-factory="rabbitConnectionFactory"
+                     exchange="ego_exchange" routing-key="ego.sms.sendSms"/>
+    <!--配置Exchange 交换机-->
+    <rabbit:topic-exchange name="ego_exchange">
+        <!--绑定交换机的队列 交换机将消息路由到绑定的队列中 可以绑定多个队列-->
+        <rabbit:bindings>
+            <rabbit:binding queue="ego_sms" pattern="ego.sms.*" /><!--pattern="foo.*"  匹配模式键-->
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <!--配置Queue 声明队列-->
+    <rabbit:queue name="ego_sms" />
+
+
+    <!--配置listener and container进行pojo的解析 -->
+    <!--通过foo对象的listen方法来消费队列“myQueue”里得消息-->
+    <rabbit:listener-container connection-factory="rabbitConnectionFactory">
+        <rabbit:listener ref="smsListener" method="listen" queue-names="ego_sms" />
+    </rabbit:listener-container>
+    <bean id="smsListener" class="com.shsxt.ego.sso.service.impl.SmsListener" />
+</beans>

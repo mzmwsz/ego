@@ -2,13 +2,11 @@ package com.shsxt.ego.manager.Service.impl;
 
 import com.shsxt.ego.common.model.EgoResult;
 import com.shsxt.ego.common.model.PageResult;
-import com.shsxt.ego.common.utlis.IDUtlis;
+import com.shsxt.ego.common.utils.IDUtlis;
 import com.shsxt.ego.manager.Service.IManagerItemService;
 import com.shsxt.ego.rpc.pojo.TbItem;
 import com.shsxt.ego.rpc.pojo.TbItemDesc;
-import com.shsxt.ego.rpc.pojo.TbItemParam;
 import com.shsxt.ego.rpc.pojo.TbItemParamItem;
-import com.shsxt.ego.rpc.query.ItemParamQuery;
 import com.shsxt.ego.rpc.query.ItemQuery;
 import com.shsxt.ego.rpc.service.IItemService;
 import org.springframework.stereotype.Service;

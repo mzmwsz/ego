@@ -14,7 +14,8 @@ public class Starter {
                 "spring/applicationContext-dao.xml",
                 "spring/applicationContext-service.xml",
                 "spring/applicationContext-tx.xml",
-                "spring/applicationContext-dubbo.xml");
+                "spring/applicationContext-dubbo.xml",
+                "classpath:spring/applicationContext-redis.xml");
         ac.start();
         //阻塞程序的运行
         try {

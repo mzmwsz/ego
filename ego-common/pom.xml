@@ -12,15 +12,19 @@
     <artifactId>ego-common</artifactId>
 
     <name>ego-common</name>
-    <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
 
-    <properties>
-
-    </properties>
 
     <dependencies>
-
+        <!-- Jackson Json处理工具包 -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>${servlet-api.version}</scope>
+        </dependency>
     </dependencies>
 
     <build>

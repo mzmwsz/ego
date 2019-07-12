@@ -114,4 +114,24 @@
       updated = #{updated,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <!--通过type值判断是去查询用户名，手机号，邮箱的唯一效验-->
+  <select id="userCheck" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from tb_user
+    <where>
+      <if test="type !=null">
+        <if test="type==1">
+          username =#{param}
+        </if>
+        <if test="type==2">
+          phone =#{param}
+        </if>
+        <if test="type==3">
+          email =#{param}
+        </if>
+      </if>
+    </where>
+  </select>
+
 </mapper>

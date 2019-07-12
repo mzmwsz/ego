@@ -13,6 +13,10 @@
         <module>ego-code-generate</module>
         <module>ego-manager-web</module>
         <module>ego-common</module>
+        <module>ego-portal-web</module>
+        <module>ego-sso-web</module>
+        <module>ego-search-web</module>
+        <module>ego-item-web</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -48,7 +52,22 @@
         <log4j.version>1.2.17</log4j.version>
         <aspectj.version>1.8.2</aspectj.version>
         <aopalliance.version>1.0</aopalliance.version>
+        <!--阿里云的的短信发送-->
+        <aliyun.sms.version>4.0.3</aliyun.sms.version>
+
+        <!--
+           mq 坐标配置
+        -->
+        <spring.rabbit.version>1.6.5.RELEASE</spring.rabbit.version>
+
+        <!--
+         es 搜索
+       -->
+        <es.version>2.4.5</es.version>
+        <spring.data.es.version>2.0.11.RELEASE</spring.data.es.version>
+
     </properties>
+
     <!-- 只定义依赖的版本，并不实际依赖 -->
     <dependencyManagement>
 
@@ -273,7 +292,43 @@
                 <artifactId>httpcore</artifactId>
                 <version>${httpcomponents.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun.sms.version}</version>
+            </dependency>
+
+            <!--阿里云短信依赖-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun.sms.version}</version>
+            </dependency>
+
+            <!--RabitMq中间件依赖-->
+            <dependency>
+                <groupId>org.springframework.amqp</groupId>
+                <artifactId>spring-rabbit</artifactId>
+                <version>${spring.rabbit.version}</version>
+            </dependency>
+
+            <!--elasticsearch 检索依赖-->
+            <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>${es.version}</version>
+            </dependency>
+
+            <!-- SpringDataElasticsearch核心 -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+                <version>${spring.data.es.version}</version>
+            </dependency>
+
         </dependencies>
+
     </dependencyManagement>
 
     <build>
